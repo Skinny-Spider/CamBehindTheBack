@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float mouseSensitivity;
 
     private float speed = 4.0f;
+
+    float leftRightRot;
     void Start()
     {
 
@@ -13,7 +16,12 @@ public class Player : MonoBehaviour
     void Update()
     {
 
+        leftRightRot = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity; ;
+        
 
+
+        transform.Rotate(new Vector3(0, leftRightRot));
+       
 
         if (Input.GetKey(KeyCode.RightArrow))
         {

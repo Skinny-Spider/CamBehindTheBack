@@ -524,6 +524,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 013484cb8cbfa9f47a373b93022be106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jump: {x: 0, y: 0, z: 0}
+  jumpForce: 2
+  isGrounded: 0
   mouseSensitivity: 100
 --- !u!54 &2103305718
 Rigidbody:

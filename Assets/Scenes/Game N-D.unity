@@ -219,7 +219,6 @@ GameObject:
   - component: {fileID: 223299714}
   - component: {fileID: 223299713}
   - component: {fileID: 223299712}
-  - component: {fileID: 223299711}
   m_Layer: 5
   m_Name: Night
   m_TagString: Untagged
@@ -248,20 +247,6 @@ RectTransform:
   m_AnchoredPosition: {x: -16, y: -185}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &223299711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223299709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347a033d86737004680be24513c0617e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Day: {fileID: 0}
-  Night: {fileID: 223299712}
 --- !u!114 &223299712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +341,6 @@ GameObject:
   - component: {fileID: 571699603}
   - component: {fileID: 571699602}
   - component: {fileID: 571699601}
-  - component: {fileID: 571699604}
   m_Layer: 5
   m_Name: Day
   m_TagString: Untagged
@@ -467,20 +451,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571699599}
   m_CullTransparentMesh: 1
---- !u!114 &571699604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571699599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347a033d86737004680be24513c0617e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Day: {fileID: 571699601}
-  Night: {fileID: 0}
 --- !u!1 &978558334
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +531,7 @@ GameObject:
   - component: {fileID: 1288410716}
   - component: {fileID: 1288410715}
   - component: {fileID: 1288410714}
+  - component: {fileID: 1288410718}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -651,6 +622,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1288410718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288410713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347a033d86737004680be24513c0617e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Day: {fileID: 571699601}
+  Night: {fileID: 223299712}
 --- !u!1 &1394103201
 GameObject:
   m_ObjectHideFlags: 0

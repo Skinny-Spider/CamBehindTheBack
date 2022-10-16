@@ -12,6 +12,7 @@ public class Hauptmenü : MonoBehaviour
         Speed.onClick.AddListener(switchToSpeedrunScene);
     }
 
+   
     void switchToGameScene()
     {
         SceneManager.LoadScene(3);
@@ -19,5 +20,9 @@ public class Hauptmenü : MonoBehaviour
     void switchToSpeedrunScene()
     {
         SceneManager.LoadScene(2);
+    }
+    void Update()
+    {
+       
     }
 }

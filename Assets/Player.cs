@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     public float mouseSensitivity;
 
-    private float speed = 1000;
+    private float speed = 2000;
 
     float leftRightRot;
 
@@ -31,12 +31,11 @@ public class Player : MonoBehaviour
         isGrounded = false;
     }
 
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+        {           
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);           
         }
 
         leftRightRot = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity; ;
@@ -45,25 +44,26 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            rb.velocity = transform.right * speed * Time.deltaTime;
+            Vector3 newVelocity = transform.right * speed * Time.deltaTime;
+            rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z); 
         }
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            rb.velocity = -transform.right * speed * Time.deltaTime;
+            Vector3 newVelocity = -transform.right * speed * Time.deltaTime;
+            rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
         }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            
-            rb.velocity = transform.forward * speed * Time.deltaTime;
+            Vector3 newVelocity = transform.forward * speed * Time.deltaTime;
+            rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            rb.velocity = -transform.forward * speed * Time.deltaTime;
+            Vector3 newVelocity = -transform.forward * speed * Time.deltaTime;
+            rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
         }
-
-
     }
 }

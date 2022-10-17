@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -6,14 +8,18 @@ public class Player : MonoBehaviour
     public Vector3 jump;
     public float jumpForce = 1.0f;
 
+    public float maxGroundAngle = 45f;
+
     public bool isGrounded;
     Rigidbody rb;
 
     public float mouseSensitivity;
 
-    private float speed = 2000;
+    public float speed = 3000;
 
     float leftRightRot;
+
+    List<GameObject> currentCollisions = new List<GameObject>();
 
     void Start()
     {
@@ -21,18 +27,43 @@ public class Player : MonoBehaviour
         jump = new Vector3(0.0f, 2.0f, 0.0f);
     }
 
-    void OnCollisionStay()
+
+
+    private void OnCollisionEnter(Collision collision)
     {
-        isGrounded = true;
+        currentCollisions.Add(collision.gameObject);
+
+        Vector3 collidedObjectNormal = collision.contacts[0].normal;
+
+        Vector3 rigibodyNormal = new Vector3(0, 1, 0);
+
+        float angle = Vector3.Angle(collidedObjectNormal, rigibodyNormal);
+               
+        if (angle < 45)
+        {
+            isGrounded = true;
+        }
     }
 
-    void OnCollisionExit()
+    void OnCollisionExit(Collision collision)
     {
+        currentCollisions.Remove(collision.gameObject);
+
         isGrounded = false;
     }
 
+    
+
     void Update()
     {
+
+        Debug.Log($"CurrentCollisions: {currentCollisions.Count}");
+
+        if (transform.position.y < -50)
+        {
+            Respawn();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {           
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);           
@@ -65,5 +96,10 @@ public class Player : MonoBehaviour
             Vector3 newVelocity = -transform.forward * speed * Time.deltaTime;
             rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
         }
+    }
+
+    void Respawn()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
